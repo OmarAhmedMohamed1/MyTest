@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="Task_ID" />
+    </Key>
+    <Property Name="Task_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Task_Title" Type="nvarchar" MaxLength="30" />
+    <Property Name="Task_Disc" Type="nvarchar" MaxLength="60" />
+    <Property Name="Task_Stat" Type="nvarchar" MaxLength="40" />
+    <Property Name="Task_DueDate" Type="datetime" />
+    <Property Name="UsersEmployee_Name" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="UsersEmployees">
+    <Key>
+      <PropertyRef Name="UsersEmployee_Name" />
+    </Key>
+    <Property Name="UsersEmployee_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="UsersEmployee_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsersEmployee_Pass" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="UsersManagers">
+    <Key>
+      <PropertyRef Name="UsersManager_ID" />
+    </Key>
+    <Property Name="UsersManager_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsersManager_Name" Type="nvarchar" MaxLength="30" />
+    <Property Name="UsersManager_Pass" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <Association Name="FK__Tasks__UsersEmpl__656C112C">
+    <End Role="UsersEmployees" Type="Self.UsersEmployees" Multiplicity="0..1" />
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersEmployees">
+        <PropertyRef Name="UsersEmployee_Name" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="UsersEmployee_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmployeeSystemModelStoreContainer">
+    <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersEmployees" EntityType="Self.UsersEmployees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersManagers" EntityType="Self.UsersManagers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Tasks__UsersEmpl__656C112C" Association="Self.FK__Tasks__UsersEmpl__656C112C">
+      <End Role="UsersEmployees" EntitySet="UsersEmployees" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

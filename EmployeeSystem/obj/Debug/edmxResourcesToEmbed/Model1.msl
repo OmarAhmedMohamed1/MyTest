@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EmployeeSystemModelStoreContainer" CdmEntityContainer="EmployeeSystemEntities7">
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="EmployeeSystemModel.Task">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="Task_ID" ColumnName="Task_ID" />
+          <ScalarProperty Name="Task_Title" ColumnName="Task_Title" />
+          <ScalarProperty Name="Task_Disc" ColumnName="Task_Disc" />
+          <ScalarProperty Name="Task_Stat" ColumnName="Task_Stat" />
+          <ScalarProperty Name="Task_DueDate" ColumnName="Task_DueDate" />
+          <ScalarProperty Name="UsersEmployee_Name" ColumnName="UsersEmployee_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersEmployees">
+      <EntityTypeMapping TypeName="EmployeeSystemModel.UsersEmployee">
+        <MappingFragment StoreEntitySet="UsersEmployees">
+          <ScalarProperty Name="UsersEmployee_Name" ColumnName="UsersEmployee_Name" />
+          <ScalarProperty Name="UsersEmployee_ID" ColumnName="UsersEmployee_ID" />
+          <ScalarProperty Name="UsersEmployee_Pass" ColumnName="UsersEmployee_Pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersManagers">
+      <EntityTypeMapping TypeName="EmployeeSystemModel.UsersManager">
+        <MappingFragment StoreEntitySet="UsersManagers">
+          <ScalarProperty Name="UsersManager_ID" ColumnName="UsersManager_ID" />
+          <ScalarProperty Name="UsersManager_Name" ColumnName="UsersManager_Name" />
+          <ScalarProperty Name="UsersManager_Pass" ColumnName="UsersManager_Pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
